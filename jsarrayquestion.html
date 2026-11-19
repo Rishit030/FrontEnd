@@ -1,0 +1,54 @@
+<script>
+const students = [
+    { name: "Rahul", marks: 85 },
+    { name: "Priya", marks: 32 },
+    { name: "Amit", marks: 67 },
+    { name: "Sneha", marks: 90 },
+    { name: "Kiran", marks: 28 }
+];
+
+function studentResult(students) {
+
+    // Add 5 grace marks
+    const updated = students.map(function(s) {
+        return {
+            name: s.name,
+            marks: Math.min(s.marks + 5, 100)
+        };
+    });
+
+    // Select passing students
+    const passed = updated.filter(function(s) {
+        return s.marks >= 40;
+    });
+
+    // Calculate average marks
+    const total = passed.reduce(function(sum, s) {
+        return sum + s.marks;
+    }, 0);
+
+    const average = total / passed.length;
+
+    // Display passing students
+    console.log("Passing Students:");
+
+    passed.forEach(function(s) {
+        console.log(s.name + " : " + s.marks);
+    });
+
+    return {
+        passed: passed,
+        average: average
+    };
+}
+
+// IIFE
+(function() {
+
+    const result = studentResult(students);
+
+    console.log("Final Report");
+    console.log("Average Marks: " + result.average);
+
+})();
+</script>
