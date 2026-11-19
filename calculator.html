@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Calculator</title>
+
+    <style>
+        .calculator {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: lightgray;
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            height: 40px;
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        button {
+            width: 55px;
+            height: 45px;
+            margin: 4px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .clear, .delete {
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h2>My Calculator</h2>
+
+        <input type="text" id="display" readonly>
+
+        <br>
+
+        <button onclick="clearDisplay()" class="clear">CLEAR</button>
+        <button onclick="deleteNumber()" class="delete">DELETE</button>
+
+        <br><br>
+
+        <button onclick="add('7')">7</button>
+        <button onclick="add('8')">8</button>
+        <button onclick="add('9')">9</button>
+        <button onclick="add('/')">/</button>
+
+        <br>
+
+        <button onclick="add('4')">4</button>
+        <button onclick="add('5')">5</button>
+        <button onclick="add('6')">6</button>
+        <button onclick="add('*')">*</button>
+
+        <br>
+
+        <button onclick="add('1')">1</button>
+        <button onclick="add('2')">2</button>
+        <button onclick="add('3')">3</button>
+        <button onclick="add('-')">-</button>
+
+        <br>
+
+        <button onclick="add('.')">.</button>
+        <button onclick="add('0')">0</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="add('+')">+</button>
+
+    </div>
+
+    <script>
+
+        function add(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function calculate() {
+            let x = document.getElementById("display").value;
+
+            if (x == "") {
+                return;
+            }
+
+            try {
+                let answer = eval(x);
+
+                if (!Number.isFinite(answer)) {
+                    document.getElementById("display").value = "Error";
+                }
+                else {
+                    document.getElementById("display").value = answer;
+                }
+
+            }
+            catch {
+                document.getElementById("display").value = "Error";
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function deleteNumber() {
+            let x = document.getElementById("display").value;
+
+            document.getElementById("display").value = x.slice(0, -1);
+        }
+
+    </script>
+
+</body>
+</html>

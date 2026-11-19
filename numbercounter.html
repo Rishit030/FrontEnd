@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter App</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: lightgray;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        #count {
+            font-size: 50px;
+            margin: 20px;
+        }
+
+        button {
+            padding: 6px 10px;
+            margin: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #inc {
+            background-color: green;
+            color: white;
+        }
+
+        #dec {
+            background-color: red;
+            color: white;
+        }
+
+        #reset {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Counter Application</h1>
+
+    <h2 id="count">0</h2>
+
+    <button id="inc" onclick="increment()">Increment</button>
+
+    <button id="dec" onclick="decrement()">Decrement</button>
+
+    <button id="reset" onclick="reset()">Reset</button>
+
+    <script>
+let number = 0;
+
+function increment() {
+    number++;
+    document.getElementById("count").innerHTML = number;
+}
+
+function decrement() {
+    if (number > 0) {
+        number--;
+    }
+
+    document.getElementById("count").innerHTML = number;
+}
+
+function reset() {
+    number = 0;
+    document.getElementById("count").innerHTML = number;
+}
+    </script>
+
+</body>
+</html>
